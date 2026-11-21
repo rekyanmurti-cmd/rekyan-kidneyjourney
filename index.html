@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kidney Journey - Edukasi Gagal Ginjal Kronis</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Times New Roman',Times,serif;background:#F2F7F4;color:#344A40;line-height:1.7}
+h1,h2,h3,.logo{font-family:'Times New Roman',Times,serif}
+header{background:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;box-shadow:0 3px 15px rgba(0,0,0,.08);position:sticky;top:0;z-index:100}
+.logo{color:#276B59;font-size:28px;font-weight:bold;cursor:pointer}
+.logo span{color:#E67E22}
+nav{display:flex;flex-wrap:wrap;gap:6px}
+nav a{text-decoration:none;color:#405B4D;font-size:14px;font-weight:bold;padding:8px 12px;border-radius:20px;cursor:pointer;transition:.3s}
+nav a:hover,nav a.active{background:#276B59;color:#fff;transform:translateY(-1px)}
+.page{display:none;min-height:70vh}
+.page.active{display:block;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.hero{min-height:500px;padding:65px 8%;display:flex;align-items:center;justify-content:space-between;gap:40px;background:linear-gradient(120deg,#DFF0E6,#C6E4D2,#FFE8CC)}
+.hero-text{max-width:600px}
+.badge{display:inline-block;background:#fff;color:#276B59;font-weight:bold;font-size:13px;letter-spacing:1px;padding:7px 14px;border-radius:20px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+.hero h1{color:#214F40;font-size:46px;line-height:1.15;margin:18px 0;font-weight:bold}
+.hero h1 span{color:#E67E22}
+.hero p{font-size:18px}
+.stats{display:flex;gap:15px;margin-top:25px;flex-wrap:wrap}
+.stat{background:#fff;padding:12px 18px;border-radius:14px;box-shadow:0 5px 15px rgba(0,0,0,.06);text-align:center;flex:1;min-width:120px;cursor:pointer}
+.stat b{display:block;font-size:24px;color:#276B59}
+.stat span{font-size:13px;color:#666}
+.btn{display:inline-block;background:#276B59;color:#fff;padding:13px 28px;border:none;border-radius:30px;text-decoration:none;font-weight:bold;cursor:pointer;margin-top:18px;transition:.3s;font-family:'Times New Roman',Times,serif;font-size:17px;box-shadow:0 6px 15px rgba(39,107,89,.3)}
+.btn:hover{background:#E67E22;transform:translateY(-2px);box-shadow:0 8px 18px rgba(230,126,34,.35)}
+.btn2{background:#fff;color:#276B59;border:2px solid #276B59;margin-left:10px;box-shadow:none}
+.btn2:hover{background:#276B59;color:#fff}
+.hero-box{background:#fff;padding:15px;border-radius:28px;text-align:center;width:370px;flex-shrink:0;box-shadow:0 15px 35px rgba(39,107,89,.15);transform:none;cursor:pointer}
+.hero-box img{width:100%;height:280px;object-fit:cover;border-radius:20px;display:block}
+.hero-box h2{color:#276B59;margin:12px 0 4px}
+.hero-box p{font-size:15px}
+.page-banner{background:linear-gradient(120deg,#DCECE3,#C8E0D3,#FFE8CC);padding:55px 8%;text-align:center}
+.page-banner h1{color:#214F40;font-size:36px;margin-bottom:10px}
+.content{max-width:1100px;margin:45px auto;padding:0 25px}
+.content h2{color:#276B59;margin:25px 0 12px;font-weight:bold;font-size:27px}
+.content p{margin-bottom:15px;font-size:17px}
+.content ul{padding-left:25px;margin-bottom:20px}
+.content li{margin-bottom:8px;font-size:17px}
+.section-title{text-align:center;margin:45px 0 5px}
+.section-title h2{font-size:30px}
+.section-title p{color:#666}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:35px 8%}
+.card-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin:25px 0}
+.card{background:#fff;padding:25px;border-radius:18px;border:1px solid #E0ECE5;box-shadow:0 5px 15px rgba(0,0,0,.04);transition:.3s;position:relative;overflow:hidden;cursor:pointer}
+.card:before{content:"";position:absolute;top:0;left:0;width:100%;height:5px;background:linear-gradient(90deg,#276B59,#E67E22)}
+.card:hover{transform:translateY(-7px);box-shadow:0 12px 25px rgba(39,107,89,.15)}
+.card h3{color:#276B59;margin-bottom:10px;font-weight:bold;font-size:21px}
+.card p{font-size:16px}
+.card a{display:inline-block;margin-top:12px;color:#E67E22;font-weight:bold;text-decoration:none;cursor:pointer}
+.card a:hover{color:#276B59}
+.journey{background:#fff;border-radius:20px;padding:30px;margin:20px 8%;box-shadow:0 5px 20px rgba(0,0,0,.05);display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between;text-align:center}
+.journey div{flex:1;min-width:140px;cursor:pointer}
+.journey .num{width:50px;height:50px;background:#276B59;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:bold;margin:0 auto 10px}
+.journey div:nth-child(2) .num{background:#E67E22}
+.journey div:nth-child(3) .num{background:#2E86C1}
+.journey div:nth-child(4) .num{background:#8E44AD}
+.info-box{background:#E5F0EB;border-left:5px solid #276B59;padding:20px;border-radius:12px;margin:25px 0;font-size:16px}
+.info-box.orange{background:#FFF3E0;border-left-color:#E67E22}
+.contact-item{background:#fff;padding:18px 20px;border-radius:14px;border:1px solid #E0ECE5;margin-bottom:12px}
+.contact-item strong{color:#276B59;display:block;margin-bottom:3px}
+.form-box{max-width:650px;background:#fff;padding:30px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,.05);margin:25px 0}
+.form-box label{display:block;margin:15px 0 7px;font-weight:bold;color:#276B59}
+.form-box input,.form-box select,.form-box textarea{width:100%;padding:12px;border:1px solid #C9DCD0;border-radius:10px;font-family:'Times New Roman',Times,serif;font-size:16px}
+.form-box button{margin-top:20px}
+#hasil{margin-top:15px;color:#276B59;font-weight:bold}
+footer{background:#214F40;color:#fff;text-align:center;padding:28px 20px;margin-top:50px;font-size:15px;line-height:1.8}
+footer b{color:#FFC07A}
+@media screen and (max-width:850px){header{flex-direction:column;align-items:flex-start}.hero{flex-direction:column;text-align:center}.hero h1{font-size:33px}.cards{grid-template-columns:repeat(2,1fr)}.hero-box{transform:none}.stats{justify-content:center}}
+@media screen and (max-width:600px){nav a{font-size:12px;padding:7px 9px}.cards,.card-list{grid-template-columns:1fr}.hero{padding:45px 6%}.hero-box{width:100%}.page-banner h1{font-size:28px}.btn2{margin-left:0}.journey{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo" onclick="showPage('home')">Kidney<span> Journey</span></div>
+<nav id="mainNav">
+<a onclick="showPage('home')" data-page="home" class="active">Home</a>
+<a onclick="showPage('profil')" data-page="profil">Profil</a>
+<a onclick="showPage('gejala')" data-page="gejala">Gejala</a>
+<a onclick="showPage('penyebab')" data-page="penyebab">Penyebab</a>
+<a onclick="showPage('pencegahan')" data-page="pencegahan">Pencegahan</a>
+<a onclick="showPage('penanganan')" data-page="penanganan">Penanganan</a>
+<a onclick="showPage('konsultasi')" data-page="konsultasi">Konsultasi</a>
+<a onclick="showPage('kontak')" data-page="kontak">Kontak</a>
+</nav>
+</header>
+
+<!-- HOME -->
+<section id="home" class="page active">
+<div class="hero">
+<div class="hero-text">
+<span class="badge">EDUKASI KESEHATAN GINJAL - GRATIS</span>
+<h1>Mulai Perjalanan Sehat <span>Bersama Ginjalmu</span></h1>
+<p>Mari mengenal penyakit gagal ginjal kronis, memahami gejalanya, serta mengetahui cara menjaga kesehatan ginjal sejak dini.</p>
+<button class="btn" onclick="showPage('profil')">Pelajari Lebih Lanjut &rarr;</button>
+<button class="btn btn2" onclick="showPage('gejala')">Cek Gejalanya</button>
+<div class="stats">
+<div class="stat" onclick="showPage('profil')"><b>2</b><span>Buah Ginjal</span></div>
+<div class="stat" onclick="showPage('profil')"><b>5</b><span>Stadium Penyakit</span></div>
+<div class="stat" onclick="showPage('pencegahan')"><b>100%</b><span>Bisa Dicegah</span></div>
+</div>
+</div>
+<div class="hero-box" onclick="showPage('profil')">
+<img src="gambar.webp.jpeg" alt="Model Ginjal">
+<h2>Sayangi Ginjalmu</h2>
+<p>Ginjal sehat, hidup lebih berkualitas. Klik untuk mulai belajar &rarr;</p>
+</div>
+</div>
+<div class="section-title"><h2>Selamat Datang di Kidney Journey</h2><p>Teman perjalananmu untuk memahami kesehatan ginjal</p></div>
+<div class="content"><p style="text-align:center">Kidney Journey merupakan website edukasi kesehatan yang memberikan informasi mengenai penyakit gagal ginjal kronis. Melalui website ini, masyarakat diharapkan dapat memahami fungsi ginjal, mengenali faktor risiko, mengetahui gejala, serta menerapkan pola hidup sehat untuk menjaga kesehatan ginjal.</p></div>
+<div class="journey">
+<div onclick="showPage('profil')"><div class="num">1</div><b>Kenali</b><p style="font-size:14px">Kenali apa itu gagal ginjal kronis</p></div>
+<div onclick="showPage('gejala')"><div class="num">2</div><b>Waspada</b><p style="font-size:14px">Kenali gejala & penyebabnya</p></div>
+<div onclick="showPage('pencegahan')"><div class="num">3</div><b>Cegah</b><p style="font-size:14px">Terapkan pola hidup sehat</p></div>
+<div onclick="showPage('penanganan')"><div class="num">4</div><b>Sehat</b><p style="font-size:14px">Hidup lebih berkualitas</p></div>
+</div>
+<div class="cards">
+<div class="card" onclick="showPage('gejala')"><h3>Kenali Gejalanya</h3><p>Pelajari tanda-tanda yang dapat muncul pada penyakit ginjal kronis.</p><a>Baca Selengkapnya &rarr;</a></div>
+<div class="card" onclick="showPage('penyebab')"><h3>Ketahui Penyebabnya</h3><p>Kenali berbagai kondisi yang dapat meningkatkan risiko penyakit ginjal.</p><a>Baca Selengkapnya &rarr;</a></div>
+<div class="card" onclick="showPage('pencegahan')"><h3>Cegah Sejak Dini</h3><p>Terapkan kebiasaan sehat untuk membantu menjaga fungsi ginjal.</p><a>Baca Selengkapnya &rarr;</a></div>
+</div>
+</section>
+
+<!-- PROFIL -->
+<section id="profil" class="page">
+<div class="page-banner"><h1>Profil Penyakit</h1><p>Mengenal penyakit gagal ginjal kronis lebih dekat.</p></div>
+<div class="content">
+<h2>Apa Itu Gagal Ginjal Kronis?</h2>
+<p>Gagal ginjal kronis atau penyakit ginjal kronis merupakan kondisi ketika fungsi ginjal mengalami penurunan secara bertahap dalam jangka waktu yang lama. Kondisi ini dapat menyebabkan ginjal tidak mampu menyaring zat sisa metabolisme dan kelebihan cairan dari dalam tubuh secara optimal.</p>
+<h2>Fungsi Ginjal</h2><ul><li>Menyaring darah dan membuang zat sisa metabolisme.</li><li>Mengatur keseimbangan cairan dan elektrolit tubuh.</li><li>Membantu mengatur tekanan darah.</li><li>Membantu pembentukan sel darah merah.</li><li>Menjaga keseimbangan mineral untuk kesehatan tulang.</li></ul>
+<h2>Tahapan Penyakit Ginjal Kronis</h2><p>Penyakit ginjal kronis umumnya dibagi menjadi lima stadium berdasarkan nilai laju filtrasi glomerulus atau eGFR.</p>
+<div class="info-box"><p><strong>Stadium 1:</strong> Fungsi penyaringan masih normal atau tinggi, tetapi terdapat tanda kerusakan ginjal.</p><p><strong>Stadium 2:</strong> Penurunan fungsi ginjal ringan.</p><p><strong>Stadium 3:</strong> Penurunan fungsi ginjal sedang.</p><p><strong>Stadium 4:</strong> Penurunan fungsi ginjal berat.</p><p><strong>Stadium 5:</strong> Gagal ginjal atau penurunan fungsi ginjal sangat berat.</p></div>
+<div style="text-align:center;margin-top:20px"><button class="btn" onclick="showPage('gejala')">Lanjut ke Gejala &rarr;</button></div>
+</div>
+</section>
+
+<!-- GEJALA -->
+<section id="gejala" class="page">
+<div class="page-banner"><h1>Gejala Gagal Ginjal Kronis</h1><p>Kenali tanda-tanda gangguan fungsi ginjal.</p></div>
+<div class="content"><h2>Gejala yang Perlu Diketahui</h2><p>Pada tahap awal, penyakit ginjal kronis sering kali tidak menimbulkan gejala yang jelas. Gejala biasanya mulai terlihat ketika fungsi ginjal sudah mengalami penurunan lebih lanjut.</p></div>
+<div class="cards">
+<div class="card" onclick="showPage('penyebab')"><h3>Mudah Lelah</h3><p>Tubuh terasa lemah dan mudah lelah meskipun tidak melakukan aktivitas berat.</p><a>Lihat Penyebabnya &rarr;</a></div>
+<div class="card" onclick="showPage('penyebab')"><h3>Perubahan Buang Air Kecil</h3><p>Frekuensi atau jumlah urine dapat mengalami perubahan.</p><a>Lihat Penyebabnya &rarr;</a></div>
+<div class="card" onclick="showPage('penyebab')"><h3>Pembengkakan</h3><p>Pembengkakan dapat terjadi pada kaki, pergelangan kaki, atau area tubuh lainnya.</p><a>Lihat Penyebabnya &rarr;</a></div>
+<div class="card" onclick="showPage('penyebab')"><h3>Mual dan Muntah</h3><p>Penumpukan zat sisa dalam tubuh dapat menyebabkan gangguan pencernaan.</p><a>Lihat Penyebabnya &rarr;</a></div>
+<div class="card" onclick="showPage('penyebab')"><h3>Gangguan Tidur</h3><p>Kesulitan tidur dapat dialami oleh sebagian penderita.</p><a>Lihat Penyebabnya &rarr;</a></div>
+<div class="card" onclick="showPage('penyebab')"><h3>Nafsu Makan Menurun</h3><p>Penderita dapat mengalami penurunan nafsu makan.</p><a>Lihat Penyebabnya &rarr;</a></div>
+</div>
+<div class="content"><div class="info-box orange"><strong>Perhatian:</strong> Gejala tersebut tidak selalu berarti seseorang mengalami penyakit ginjal kronis. Pemeriksaan oleh tenaga kesehatan diperlukan untuk mengetahui penyebabnya.</div><div style="text-align:center"><button class="btn" onclick="showPage('penyebab')">Lanjut ke Penyebab &rarr;</button></div></div>
+</section>
+
+<!-- PENYEBAB -->
+<section id="penyebab" class="page">
+<div class="page-banner"><h1>Penyebab dan Faktor Risiko</h1><p>Kenali kondisi yang dapat memengaruhi kesehatan ginjal.</p></div>
+<div class="content"><h2>Penyebab Gagal Ginjal Kronis</h2><p>Penyakit ginjal kronis dapat disebabkan oleh berbagai kondisi kesehatan yang mengakibatkan kerusakan ginjal secara bertahap.</p></div>
+<div class="card-list" style="padding:0 8%">
+<div class="card" onclick="showPage('pencegahan')"><h3>1. Diabetes Melitus</h3><p>Kadar gula darah yang tinggi dalam jangka panjang dapat merusak pembuluh darah kecil di ginjal sehingga kemampuan penyaringan darah menurun.</p><a>Lihat Cara Mencegahnya &rarr;</a></div>
+<div class="card" onclick="showPage('pencegahan')"><h3>2. Hipertensi</h3><p>Tekanan darah tinggi yang tidak terkontrol dapat merusak pembuluh darah ginjal dan mengganggu fungsinya.</p><a>Lihat Cara Mencegahnya &rarr;</a></div>
+<div class="card" onclick="showPage('pencegahan')"><h3>3. Peradangan Ginjal</h3><p>Beberapa penyakit peradangan pada ginjal dapat menyebabkan kerusakan jaringan ginjal.</p><a>Lihat Cara Mencegahnya &rarr;</a></div>
+<div class="card" onclick="showPage('pencegahan')"><h3>4. Penyakit Ginjal Keturunan</h3><p>Kelainan genetik tertentu, seperti penyakit ginjal polikistik, dapat meningkatkan risiko penyakit ginjal kronis.</p><a>Lihat Cara Mencegahnya &rarr;</a></div>
+<div class="card" onclick="showPage('pencegahan')"><h3>5. Obstruksi Saluran Kemih</h3><p>Hambatan aliran urine yang berlangsung lama dapat memengaruhi kesehatan dan fungsi ginjal.</p><a>Lihat Cara Mencegahnya &rarr;</a></div>
+</div>
+<div class="content" style="text-align:center"><button class="btn" onclick="showPage('pencegahan')">Lanjut ke Pencegahan &rarr;</button></div>
+</section>
+
+<!-- PENCEGAHAN -->
+<section id="pencegahan" class="page">
+<div class="page-banner"><h1>Pencegahan Penyakit Ginjal</h1><p>Mulai kebiasaan sehat untuk menjaga fungsi ginjal.</p></div>
+<div class="content"><h2>Bagaimana Cara Menjaga Kesehatan Ginjal?</h2><p>Menjaga kesehatan ginjal dapat dilakukan dengan menerapkan pola hidup sehat dan mengendalikan kondisi kesehatan yang menjadi faktor risiko.</p></div>
+<div class="cards">
+<div class="card" onclick="showPage('penanganan')"><h3>Minum Air yang Cukup</h3><p>Penuhi kebutuhan cairan sesuai kondisi tubuh dan anjuran tenaga kesehatan.</p><a>Lihat Penanganan &rarr;</a></div>
+<div class="card" onclick="showPage('penanganan')"><h3>Mengurangi Garam</h3><p>Batasi konsumsi makanan tinggi garam untuk membantu mengontrol tekanan darah.</p><a>Lihat Penanganan &rarr;</a></div>
+<div class="card" onclick="showPage('penanganan')"><h3>Aktivitas Fisik</h3><p>Lakukan aktivitas fisik secara teratur sesuai kemampuan tubuh.</p><a>Lihat Penanganan &rarr;</a></div>
+<div class="card" onclick="showPage('penanganan')"><h3>Kontrol Tekanan Darah</h3><p>Periksa tekanan darah secara berkala dan ikuti anjuran dokter.</p><a>Lihat Penanganan &rarr;</a></div>
+<div class="card" onclick="showPage('penanganan')"><h3>Kontrol Gula Darah</h3><p>Bagi penderita diabetes, penting untuk menjaga kadar gula darah tetap terkontrol.</p><a>Lihat Penanganan &rarr;</a></div>
+<div class="card" onclick="showPage('penanganan')"><h3>Hindari Obat Sembarangan</h3><p>Gunakan obat sesuai petunjuk tenaga kesehatan karena beberapa obat dapat memengaruhi fungsi ginjal.</p><a>Lihat Penanganan &rarr;</a></div>
+</div>
+<div class="content"><div class="info-box">Pemeriksaan fungsi ginjal secara berkala penting dilakukan, terutama bagi orang yang memiliki diabetes, hipertensi, atau faktor risiko penyakit ginjal lainnya.</div><div style="text-align:center"><button class="btn" onclick="showPage('penanganan')">Lanjut ke Penanganan &rarr;</button></div></div>
+</section>
+
+<!-- PENANGANAN -->
+<section id="penanganan" class="page">
+<div class="page-banner"><h1>Penanganan Gagal Ginjal Kronis</h1><p>Ketahui pemeriksaan dan pilihan penanganannya.</p></div>
+<div class="content"><h2>Pemeriksaan Penyakit Ginjal</h2><ul><li>Pemeriksaan darah untuk mengetahui kadar kreatinin dan memperkirakan eGFR.</li><li>Pemeriksaan urine untuk mengetahui adanya albumin atau protein.</li><li>Pemeriksaan tekanan darah.</li><li>Pemeriksaan pencitraan, seperti USG ginjal, bila diperlukan.</li></ul><h2>Pilihan Penanganan</h2></div>
+<div class="cards">
+<div class="card" onclick="showPage('konsultasi')"><h3>Pengobatan</h3><p>Dokter dapat memberikan obat untuk mengendalikan tekanan darah, diabetes, dan komplikasi penyakit ginjal.</p><a>Konsultasi Sekarang &rarr;</a></div>
+<div class="card" onclick="showPage('konsultasi')"><h3>Hemodialisis</h3><p>Prosedur penyaringan darah menggunakan mesin untuk membantu menggantikan sebagian fungsi ginjal.</p><a>Konsultasi Sekarang &rarr;</a></div>
+<div class="card" onclick="showPage('konsultasi')"><h3>Dialisis Peritoneal</h3><p>Metode dialisis yang menggunakan selaput peritoneum di dalam rongga perut sebagai penyaring.</p><a>Konsultasi Sekarang &rarr;</a></div>
+<div class="card" onclick="showPage('konsultasi')"><h3>Transplantasi Ginjal</h3><p>Prosedur pemindahan ginjal dari donor kepada penerima yang memenuhi persyaratan medis.</p><a>Konsultasi Sekarang &rarr;</a></div>
+</div>
+<div class="content"><div class="info-box">Penanganan penyakit ginjal kronis disesuaikan dengan stadium, penyebab, kondisi pasien, dan hasil pemeriksaan. Konsultasikan pilihan penanganan dengan dokter.</div><div style="text-align:center"><button class="btn" onclick="showPage('konsultasi')">Lanjut ke Konsultasi &rarr;</button></div></div>
+</section>
+
+<!-- KONSULTASI -->
+<section id="konsultasi" class="page">
+<div class="page-banner"><h1>Konsultasi Kesehatan</h1><p>Jangan ragu untuk mencari informasi dan bantuan kesehatan.</p></div>
+<div class="content"><h2>Formulir Konsultasi</h2><p>Formulir berikut merupakan contoh tampilan konsultasi edukasi. Untuk pemeriksaan dan diagnosis, silakan datang ke fasilitas pelayanan kesehatan.</p>
+<form id="consultationForm" class="form-box">
+<label>Nama Lengkap</label><input type="text" id="nama" placeholder="Masukkan nama lengkap" required>
+<label>Email</label><input type="email" id="email" placeholder="Masukkan email" required>
+<label>Topik Konsultasi</label><select id="topik" required><option value="">Pilih topik</option><option>Informasi penyakit ginjal kronis</option><option>Gejala penyakit ginjal</option><option>Pencegahan penyakit ginjal</option><option>Pemeriksaan fungsi ginjal</option><option>Informasi penanganan</option></select>
+<label>Pesan</label><textarea id="pesan" rows="5" placeholder="Tuliskan pertanyaan Anda" required></textarea>
+<button type="submit" class="btn">Kirim Pesan</button><p id="hasil"></p>
+</form>
+<div style="text-align:center"><button class="btn btn2" onclick="showPage('kontak')">Lihat Kontak &rarr;</button></div>
+</div>
+</section>
+
+<!-- KONTAK -->
+<section id="kontak" class="page">
+<div class="page-banner"><h1>Kontak dan Sumber Informasi</h1><p>Temukan informasi kesehatan ginjal dari sumber tepercaya.</p></div>
+<div class="content">
+<h2>Kontak Pengelola Website</h2>
+<p>Silakan hubungi pengelola website melalui kontak berikut untuk pertanyaan seputar edukasi di website ini:</p>
+<div class="contact-item"><strong>Alamat Pengelola Website</strong>Colomadu, Jawa Tengah</div>
+<div class="contact-item"><strong>Nomor Telepon / WhatsApp</strong>085*********</div>
+<div class="contact-item"><strong>Email</strong><a href="mailto:250205038@mhs.udb.id.ac" style="color:#276B59;font-weight:bold;text-decoration:none;">250205038@mhs.udb.id.ac</a></div>
+<div class="contact-item"><strong>Jam Layanan</strong>Senin - Jumat, 08.00 - 16.00 WIB<br>Balasan pesan dapat membutuhkan waktu 1x24 jam pada hari kerja.</div>
+<div class="contact-item"><strong>Informasi Kontak Lainnya</strong>Untuk konsultasi medis dan keadaan darurat, silakan langsung datang ke fasilitas pelayanan kesehatan terdekat atau hubungi layanan darurat. Website ini hanya untuk edukasi dan bukan pengganti diagnosis dokter.</div>
+<h2>Sumber Informasi</h2>
+<div class="card-list">
+<div class="card"><h3>Kementerian Kesehatan RI</h3><p>Sumber informasi kesehatan dari pemerintah Indonesia.</p><a href="https://www.kemkes.go.id/" target="_blank" rel="noopener">Kunjungi Website &rarr;</a></div>
+<div class="card"><h3>Perhimpunan Nefrologi Indonesia</h3><p>Organisasi profesi dokter spesialis ginjal di Indonesia.</p><a href="https://www.pernefri.org/" target="_blank" rel="noopener">Kunjungi Website &rarr;</a></div>
+<div class="card"><h3>WHO</h3><p>Sumber informasi kesehatan global.</p><a href="https://www.who.int/" target="_blank" rel="noopener">Kunjungi Website &rarr;</a></div>
+<div class="card"><h3>National Kidney Foundation</h3><p>Organisasi edukasi penyakit ginjal.</p><a href="https://www.kidney.org/" target="_blank" rel="noopener">Kunjungi Website &rarr;</a></div>
+</div>
+<div class="info-box"><strong>Catatan:</strong> Website ini hanya untuk edukasi, bukan untuk diagnosis atau pengganti konsultasi dokter.</div>
+<div style="text-align:center"><button class="btn" onclick="showPage('home')">Kembali ke Home</button></div>
+</div>
+</section>
+
+<footer><b>Kidney Journey</b><br>&copy; 2026 Kidney Journey - Edukasi Gagal Ginjal Kronis<br>Mulai Perjalanan Sehat Bersama Ginjalmu</footer>
+<script>
+function showPage(pageId){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+  var target=document.getElementById(pageId);
+  if(target){target.classList.add('active')}
+  document.querySelectorAll('#mainNav a').forEach(function(link){
+    link.classList.remove('active');
+    if(link.getAttribute('data-page')===pageId){link.classList.add('active')}
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+var form=document.getElementById('consultationForm');
+if(form){
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nama=document.getElementById('nama').value;
+    var topik=document.getElementById('topik').value;
+    document.getElementById('hasil').textContent='Terima kasih, '+nama+'! Pesan Anda tentang "'+topik+'" berhasil dikirim. Ini hanya contoh formulir edukasi.';
+    this.reset();
+  });
+}
+</script>
+</body>
+</html>
